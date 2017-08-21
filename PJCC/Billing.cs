@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using MetroFramework.Forms;
+using MetroFramework.Controls;
+using MetroFramework.Properties;
+using MetroFramework;
+
+namespace PJCC
+{
+    public partial class Billing : MetroForm
+    {
+        public Billing()
+        {
+            InitializeComponent();
+        }
+
+  
+    }
+}
