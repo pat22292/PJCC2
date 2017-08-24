@@ -51,7 +51,7 @@ namespace PJCC
         private string date;
         private string description;
         private float weight;
-        private float ratePerTon;
+        private string ratePerTon;
         private float amout;
         private string remarks;
 
@@ -60,7 +60,7 @@ namespace PJCC
         public string Date { get { return date;} set { date = value; }}
         public string Description{get { return description; }set { description = value; }}
         public float Weight{get { return weight; }set { weight = value; }}
-        public float RatePerTon{get { return ratePerTon; }set { ratePerTon = value; }}
+        public string RatePerTon {get { return ratePerTon; }set { ratePerTon = value; }}
         public float Amout{get { return amout; }set { amout = value; }}
         public string Remarks{get { return remarks; }set { remarks = value; }}
         
@@ -84,7 +84,7 @@ namespace PJCC
             dbOut();
         }
 
-        public void insertService(string Date, string description, string service, string department, string shift, float weight, float rate, float remarks) //Filtering of PJCC transactions
+        public void insertService(string Date, string description, string service, string department, string shift, decimal weight, decimal rate, string remarks) //Filtering of PJCC transactions
         {
 
             //sqlcon userConnect = new sqlcon();
@@ -105,6 +105,23 @@ namespace PJCC
             
             dbOut();
         }
+
+        public void ratePrice(ComboBox service)
+        {
+            
+             dbConnect();
+            SqlCommand cmd = new SqlCommand("SELECT [Rate] FROM[PJCC].[dbo].[PJCC_RATE] WHERE JOB = '"+ service.Text+ "'", con);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                //metroLabel5.Text = dr["Price"].ToString();
+                //metroLabel7.Text = dr["Bagging"].ToString();
+                ratePerTon = dr["Rate"].ToString();
+            }
+            dbOut();
+        }
+
 
         public static void Insert_Data_RPT()
         {
