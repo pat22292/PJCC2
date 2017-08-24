@@ -25,6 +25,7 @@ namespace PJCC
             metroComboBox1.SelectedIndex = 0;
             metroComboBox2.SelectedIndex = 0;
             metroComboBox3.SelectedIndex = 0;
+            metroDateTime1.Value = DateTime.Today;
             CRUD autoSugg = new CRUD();
             autoSugg.autoSuggest(textBoxX1);
            
@@ -32,14 +33,15 @@ namespace PJCC
 
         private void done_Click(object sender, EventArgs e)
         {
-            //CRUD newService = new CRUD();
-            //newService.insertService(metroDateTime1.Value.ToString(), textBoxX1.Text, metroComboBox2.Text, metroComboBox3.Text, metroComboBox1.Text, metroTextBox2.Text,);
+            CRUD newService = new CRUD();
+            newService.insertService(metroDateTime1.Value.ToString(), textBoxX1.Text, metroComboBox2.Text, metroComboBox3.Text, metroComboBox1.Text, Convert.ToDecimal(metroTextBox2.Text), Convert.ToDecimal(metroLabel5.Text), metroTextBox4.Text);
         }
 
         private void metroComboBox2_SelectedValueChanged(object sender, EventArgs e)
         {
-
-            //metroLabel5.Text 
+            CRUD rate = new CRUD();
+            rate.ratePrice(metroComboBox2);
+            metroLabel5.Text = rate.RatePerTon;
         }
     }
 }
