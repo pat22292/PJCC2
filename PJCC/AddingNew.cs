@@ -50,5 +50,10 @@ namespace PJCC
             rate.ratePrice(metroComboBox2);
             metroLabel5.Text = rate.RatePerTon;
         }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
