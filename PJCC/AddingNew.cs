@@ -28,6 +28,13 @@ namespace PJCC
             metroDateTime1.Value = DateTime.Today;
             CRUD autoSugg = new CRUD();
             autoSugg.autoSuggest(textBoxX1);
+
+
+
+
+
+            string a = "SELECT CONVERT(VARCHAR(10),[F2], 101) as 'Date',[F3] as 'Description' ,[F4] as 'Weight',[F5] as 'Rate',[F6] as 'Remarks',[F1] as 'Service',[F7] as 'Shift',[F8] as 'Department'FROM[PJCC].[dbo].[Services_temporary]";
+            autoSugg.viewtEMP(metroGrid2, a);
            
         }
 
