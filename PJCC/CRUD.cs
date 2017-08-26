@@ -84,6 +84,24 @@ namespace PJCC
             dbOut();
         }
 
+
+        public void viewtEMP(DataGridView table, string SQLquery)
+        {
+
+            //sqlcon userConnect = new sqlcon();
+            dbConnect();
+            SqlCommand recipe = new SqlCommand(SQLquery, con);
+            SqlDataAdapter calculated = new SqlDataAdapter();
+            calculated.SelectCommand = recipe;
+            DataTable dataSet = new DataTable();
+            calculated.Fill(dataSet);
+            BindingSource nSource = new BindingSource();
+            nSource.DataSource = dataSet;
+            table.DataSource = nSource;
+            calculated.Update(dataSet);
+            dbOut();
+        }
+
         public void insertService(string Date, string description, string service, string department, string shift, decimal weight, decimal rate, string remarks) //Filtering of PJCC transactions
         {
 
