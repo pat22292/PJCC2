@@ -18,7 +18,7 @@ namespace PJCC
         public employeeSalarycs()
         {
             InitializeComponent();
-            //BITCH
+            
         }
     }
 }
