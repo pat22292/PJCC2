@@ -21,6 +21,7 @@ namespace PJCC
 {
     public partial class AddingNew : MetroForm
     {
+
         string a = "SELECT ID, CONVERT(VARCHAR(10),[F2], 101) as 'Date',[F3] as 'Description' ,[F4] as 'Weight',[F5] as 'Rate',[F6] as 'Remarks',[F1] as 'Service',[F7] as 'Shift',[F8] as 'Department'FROM[PJCC].[dbo].[Services_temporary]";
         public AddingNew()
         {
@@ -32,11 +33,6 @@ namespace PJCC
             metroDateTime1.Value = DateTime.Today;
             CRUD autoSugg = new CRUD();
             autoSugg.autoSuggest(textBoxX1);
-
-
-
-
-
             autoSugg.viewtEMP(metroGrid2, a);
            
         }
@@ -46,6 +42,7 @@ namespace PJCC
             CRUD newService = new CRUD();
             newService.insertService(metroDateTime1.Value.ToString(), textBoxX1.Text, metroComboBox2.Text, metroComboBox3.Text, metroComboBox1.Text, Convert.ToDecimal(metroTextBox2.Text), Convert.ToDecimal(metroLabel5.Text), metroTextBox4.Text);
             newService.autoSuggest(textBoxX2);
+           
             newService.viewtEMP(metroGrid2, a);
         }
 
