@@ -47,26 +47,58 @@ namespace PJCC
         }
 
 
+
+
         //Instance Variables
         private string date;
         private string description;
-        private float weight;
+        private string weight;
         private string ratePerTon;
-        private float amout;
+        private string amout;
         private string remarks;
-
+        private string service;
+        private string shift;
+        private string department;
 
         //Properties
         public string Date { get { return date;} set { date = value; }}
         public string Description{get { return description; }set { description = value; }}
-        public float Weight{get { return weight; }set { weight = value; }}
+        public string Weight {get { return weight; }set { weight = value; }}
         public string RatePerTon {get { return ratePerTon; }set { ratePerTon = value; }}
-        public float Amout{get { return amout; }set { amout = value; }}
+        public string Amout {get { return amout; }set { amout = value; }}
         public string Remarks{get { return remarks; }set { remarks = value; }}
-        
-
+        public string Service { get { return service; } set { service = value; } }
+        public string Shift { get { return shift; } set { shift = value; } }
+        public string Department { get { return department; } set { department = value; } }
 
         //FUNCTIONS
+
+
+
+
+
+        public void searchServiceID(string ID) 
+        {
+            dbConnect();
+
+            SqlCommand cmd = new SqlCommand("[modifyRow] '" + ID + "'", con);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                Service = dr["F1"].ToString();
+                Date = dr["F2"].ToString();
+                Description = dr["F3"].ToString();
+                Weight = dr["F4"].ToString();
+                RatePerTon = dr["F5"].ToString();
+                Remarks = dr["F6"].ToString();
+                Shift = dr["F7"].ToString();
+                Department = dr["F8"].ToString();
+
+            }
+            dbOut();
+        }
+
         public void view(DataGridView table, string startDate, string endDate, string service, string department, string shift) //Filtering of PJCC transactions
         {
           
